@@ -1,0 +1,196 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 15% 8%;
+    --foreground: 240 10% 95%;
+
+    --card: 260 15% 12%;
+    --card-foreground: 240 10% 95%;
+
+    --popover: 260 15% 12%;
+    --popover-foreground: 240 10% 95%;
+
+    --primary: 260 70% 70%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 30% 30%;
+    --secondary-foreground: 240 5% 90%;
+
+    --muted: 260 20% 20%;
+    --muted-foreground: 240 5% 70%;
+
+    --accent: 270 50% 25%;
+    --accent-foreground: 240 5% 90%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 15% 20%;
+    --input: 260 15% 20%;
+    --ring: 260 70% 70%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 260 15% 8%;
+    --sidebar-foreground: 240 5% 90%;
+    --sidebar-primary: 260 70% 70%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 260 20% 20%;
+    --sidebar-accent-foreground: 240 5% 90%;
+    --sidebar-border: 260 15% 20%;
+    --sidebar-ring: 260 70% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    @apply bg-dark-gradient;
+  }
+  
+  .emotion-card {
+    @apply relative overflow-hidden rounded-2xl p-6 border border-theme-purple/20 shadow-md transition-all duration-300 
+    hover:shadow-glow hover:border-theme-purple/40 bg-card/90 backdrop-blur-sm;
+  }
+  
+  .song-card {
+    @apply p-4 rounded-xl border border-border/80 bg-card/90 backdrop-blur-sm 
+    hover:border-theme-purple/50 hover:shadow-glow transition-all flex items-center gap-3;
+  }
+
+  .glow-btn {
+    @apply bg-purple-gradient hover:shadow-glow-strong transition-all duration-300;
+  }
+  
+  .purple-gradient {
+    @apply bg-purple-gradient;
+  }
+  
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-theme-purple/20 rounded-2xl shadow-md;
+  }
+}
+
+/* Aurora animation */
+.aurora-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: rotate(180deg);
+}
+
+.aurora-1, .aurora-2, .aurora-3 {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 40%;
+  filter: blur(60px);
+}
+
+.aurora-1 {
+  background: linear-gradient(90deg, rgba(134, 102, 234, 0.2), rgba(0, 0, 0, 0));
+  animation: aurora-movement 24s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.aurora-2 {
+  background: linear-gradient(90deg, rgba(155, 135, 245, 0.2), rgba(0, 0, 0, 0));
+  animation: aurora-movement 16s ease-in-out infinite;
+  animation-delay: -4s;
+  opacity: 0.2;
+}
+
+.aurora-3 {
+  background: linear-gradient(90deg, rgba(230, 152, 255, 0.2), rgba(0, 0, 0, 0));
+  animation: aurora-movement 20s ease-in-out infinite;
+  animation-delay: -8s;
+  opacity: 0.3;
+}
+
+@keyframes aurora-movement {
+  0% {
+    top: -200%;
+    left: -50%;
+    transform: rotate(0deg);
+  }
+  50% {
+    top: -100%;
+    left: 0%;
+    transform: rotate(60deg);
+  }
+  100% {
+    top: -200%;
+    left: -50%;
+    transform: rotate(0deg);
+  }
+}
+
+/* Floating stars animation */
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  animation: star-float 10s ease-in-out infinite;
+}
+
+@keyframes star-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Improved wave animation */
+@keyframes wave {
+  0% { transform: rotate(0.0deg); }
+  10% { transform: rotate(14.0deg); }
+  20% { transform: rotate(-8.0deg); }
+  30% { transform: rotate(14.0deg); }
+  40% { transform: rotate(-4.0deg); }
+  50% { transform: rotate(10.0deg); }
+  60% { transform: rotate(0.0deg); }
+  100% { transform: rotate(0.0deg); }
+}
+
+.animate-wave {
+  animation: wave 2.5s ease-in-out infinite;
+}
+
+/* Enhanced glow effect */
+.shadow-glow {
+  box-shadow: 0 0 15px 2px rgba(155, 135, 245, 0.4);
+}
+
+.shadow-glow-strong {
+  box-shadow: 0 0 20px 5px rgba(155, 135, 245, 0.5);
+}
